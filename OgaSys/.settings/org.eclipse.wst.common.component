@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="OgaSys">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes/" source-path="/ImportedClasses"/>
+        <dependent-module archiveName="mongo-java-driver-3.1.0.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/mongo-java-driver-3.1.0/mongo-java-driver-3.1.0">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="morphia-1.0.0-rc0.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/morphia-1.0.0-rc0/morphia-1.0.0-rc0">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="java-output-path" value="/OgaSys/build/classes"/>
+        <property name="context-root" value="OgaSys"/>
+    </wb-module>
+</project-modules>
