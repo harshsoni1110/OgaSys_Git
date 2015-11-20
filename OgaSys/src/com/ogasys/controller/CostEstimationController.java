@@ -22,6 +22,7 @@ import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.MongoClient;
+import com.ogasys.dao.DBConnection;
 import com.ogasys.model.FaultPrice;
 import com.ogasys.model.Service;
 import com.ogasys.model.ServiceFault;
@@ -48,30 +49,30 @@ public class CostEstimationController extends HttpServlet {
 		HttpSession session = request.getSession();
 		List<ObjectId> lsFault = (List<ObjectId>) session.getAttribute("lsFault");
 		List<ServiceFault> faultPriceList = new ArrayList <ServiceFault>();
-		MongoClient mongoClient = new MongoClient();
+		MongoClient mongoClient = DBConnection.getInstance().getMongoInstance();
 		DB db = mongoClient.getDB("ogasys");
-		DBCollection fpricecollection = db.getCollection("faultPrice");
-		DBCollection fcollection = db.getCollection("fault");
+		DBCollection fpricecollection = db.getCollection("FaultPrice");
+		DBCollection fcollection = db.getCollection("Fault");
 		BasicDBObject query = new BasicDBObject();
-		query.put("garageId.$id", garageId);
+		query.put("GarageId", garageId);
 		for(int i=0;i<lsFault.size();i++)
 		{
 			//System.out.println(lsFault.get(i));
-			query.append("FaultId.$id", lsFault.get(i).toString());
+			query.append("FaultId", lsFault.get(i).toString());
 			BasicDBObject query1 = new BasicDBObject().append("_id", lsFault.get(i));
 			DBCursor cursor = fpricecollection.find(query);
 			DBCursor cursor1 = fcollection.find(query1);
 			BasicDBObject priceobj = (BasicDBObject) cursor.next();
 			BasicDBObject fltname = (BasicDBObject) cursor1.next();
 			ServiceFault serviceFault = new ServiceFault();
-			//System.out.println(fltname.get("FaultName").toString());
-			//System.out.println(Double.parseDouble(priceobj.get("price").toString()));
+			System.out.println(fltname.get("FaultName").toString());
+			System.out.println(Double.parseDouble(priceobj.get("Price").toString()));
 			serviceFault.setFaultName(fltname.get("FaultName").toString());
-			serviceFault.setFaultPrice(Double.parseDouble(priceobj.get("price").toString()));
-			//System.out.println(serviceFault.getFaultName() + "   " + serviceFault.getFaultPrice());
+			serviceFault.setFaultPrice(Double.parseDouble(priceobj.get("Price").toString()));
+			System.out.println(serviceFault.getFaultName() + "   " + serviceFault.getFaultPrice());
 			faultPriceList.add(serviceFault);
 		}
-		DBCollection gcollection = db.getCollection("garage");
+		DBCollection gcollection = db.getCollection("Garage");
 		Cursor cur = gcollection.find(new BasicDBObject().append("_id", new ObjectId(garageId)));
 		BasicDBObject garage = (BasicDBObject)cur.next();
 		session.setAttribute("garage", garage);

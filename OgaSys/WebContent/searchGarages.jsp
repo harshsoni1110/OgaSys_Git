@@ -143,7 +143,7 @@
                         <div class="form-group">
                             <label class="col-lg-3 control-label">Select City :</label>
                             <select class="form-control" id="location" style="width:30%" name="location">
-                                <option>Ahemedabad</option>
+                                <option>Ahmedabad</option>
                                 <option>Gandhinagar</option>
                                 <option>regional</option>
                             </select>
@@ -163,12 +163,12 @@
                             <div class="col-lg-5">
                                 <div class="inline-radio">
                                     <label>
-                                        <input type="radio" name="vtype" value="2 Wheeler" checked="checked" /> 2 Wheeler
+                                        <input type="radio" name="vtype" value="0" checked="checked" /> 2 Wheeler
                                     </label>
                                 
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     <label>
-                                        <input type="radio" name="vtype" value="4 Wheeler" /> 4 Wheeler
+                                        <input type="radio" name="vtype" value="1" /> 4 Wheeler
                                     </label>
                                 </div>
                                 

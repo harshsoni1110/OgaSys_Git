@@ -22,7 +22,7 @@ public class Fault {
 	String faultName;
 	@Property("FaultDescription")
 	String faultDescription;
-	@Property("package")
+	@Property("Package")
 	String packageType;
 	/**
 	 * @return the faultId

@@ -66,7 +66,7 @@
               <div class="col-xs-6 col-md-3 border_result" style="margin-right:20px">
               <c:forEach items="${resultList}" var="garage">
               <a href="${pageContext.request.contextPath}/CostEstimationController?id=<c:out value="${garage.getGarageId()}"/>" class="thumbnail">
-                  <img data-src="holder.js/100%x180" alt="100%x180" src="./img/intro-bg.jpg" data-holder-rendered="true" style="height: 180px; width: 100%; display: block; id=g1">
+                  <img data-src="holder.js/100%x180" alt="100%x180" src="assets/img/intro-bg.jpg" data-holder-rendered="true" style="height: 180px; width: 100%; display: block; id=g1">
                 </a>
                 <div>
                 <h3 style="margin-left:15px;width: 80%;"><label>Garage Name: </label><c:out value="${garage.getGarageName()}"/></h3>
