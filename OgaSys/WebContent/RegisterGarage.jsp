@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>::Registration::</title>
+    <title>::Garage Registration::</title>
 
     <link rel="stylesheet" href="assets/css/bootstrap.css"/>
     <link rel="stylesheet" href="assets/css/bootstrapValidator.css"/>
@@ -16,6 +16,7 @@
     <script  src="assets/js/bootstrapValidator.js"></script>
 </head>
 <body background="assets/img/bg.jpg">
+    
     <div class="container" style="margin-top: 60px;">
         <div class="row">
             <!-- form: -->
@@ -26,28 +27,20 @@
                         <h3 class="panel-title">Sign up</h3>
                     </div>
                     <div class="panel-body">
-                    <form id="userRegister" method="post" class="form-horizontal"  action="Controller">
+                    <form id="garageRegister" method="post" class="form-horizontal"  action="Controller">
                         <div class="form-group">
-                            <label class="col-lg-3 control-label">Full name</label>
+                            <label class="col-lg-3 control-label">Garage Name</label>
                             <div class="col-lg-4">
-                                <input type="text" class="form-control" name="firstName" pattern="[A-Za-z]*" title="first name should contains only alphabets" placeholder="First name" required="required"/>
+                                <input type="text" class="form-control" name="garageName" pattern="[A-Za-z\s]*" title="Garage name should contains only alphabets and space character" placeholder="Garage name" required="required"/>
                             </div>
-                            <div class="col-lg-4">
-                                <input type="text" class="form-control" name="lastName" pattern="[A-Za-z]*" title="last name should contains only alphabets" placeholder="Last name" required="required"/>
-                            </div>
+                           
                         </div>
 
-                        <!--<div class="form-group">
-                            <label class="col-lg-3 control-label">Username</label>
-                            <div class="col-lg-5">
-                                <input type="text" class="form-control" name="username" />
-                            </div>
-                        </div>-->
-
+                       
                         <div class="form-group">
-                            <label class="col-lg-3 control-label">House/Flat Number/Name</label>
+                            <label class="col-lg-3 control-label">Shop Number and/or Name</label>
                             <div class="col-lg-6">
-                                <input type="text" class="form-control" name="houseNumber" placeholder="House and/or flat number and/or Name" required="required"/>
+                                <input type="text" class="form-control" name="shopNumber" placeholder="Garage and/or shop number and/or Name" required="required"/>
                             </div>
                         </div>
 
@@ -66,47 +59,27 @@
                         <div class="form-group">
                             <label class="col-lg-3 control-label">City</label>
                             <div class="col-lg-4">
-                                <input type="text" class="form-control" name="city" pattern="[A-Za-z]*" title="city name should contains only alphabets" placeholder="City" required="required"/>
+                                <input type="text" class="form-control" name="city" pattern="[A-Za-z/s]*" title="city name should contains only alphabets and space" placeholder="City" required="required"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-lg-3 control-label">State/Province</label>
                             <div class="col-lg-4">
-                                <input type="text" class="form-control" name="state" pattern="[A-Za-z]*" title="state name should contains only alphabets" placeholder="State/Province" required="required"/>
+                                <input type="text" class="form-control" name="state" pattern="[A-Za-z/s]*" title="state name should contains only alphabets and space" placeholder="State/Province" required="required"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-lg-3 control-label">Postal code</label>
                             <div class="col-lg-3">
-                                <input type="text" class="form-control" name="postalCode" maxlength="6" pattern="[0-9]{6}" title="postal code should contain at least 6 digits" placeholder="Postal code" required="required"/>
+                                <input type="text" class="form-control" name="postalCode" pattern="[0-9]{6}" title="postal code should contain at least 6 digits" placeholder="Postal code" required="required"/>
                             </div>
                         </div>
                          
-                         <div class="form-group">
-                            <label class="col-lg-3 control-label">Gender</label>
-                            <div class="col-lg-5">
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="gender" value="1" required/> Male
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="gender" value="2" required/> Female
-                                    </label>
-                                </div>
-                                <!-- <div class="radio">
-                                    <label>
-                                        <input type="radio" name="gender" value="other" /> Other
-                                    </label>
-                                </div> -->
-                            </div>
-                        </div>
-
+                       
                         <div class="form-group">
                                 <label class="col-lg-3 control-label">Phone/Mobile number</label>
                                 <div class="col-lg-5">
-                                    <input type="text" class="form-control" maxlength="11" pattern="[0-9]{10,11}" name="phoneNumber" placeholder="Phone/Mobile Number" required="required"/>
+                                    <input type="text" class="form-control" pattern="[0-9]{10,11}" name="phoneNumber" placeholder="Phone/Mobile Number" required="required"/>
                                 </div>
                         </div>
 
@@ -135,7 +108,7 @@
                             <div class="col-lg-9 col-lg-offset-3">
                                 <button type="submit" class="btn btn-primary" name="register" value="Register">Register</button>
                                 <button type="reset" class="btn btn-info" id="resetBtn">Cancel</button>
-                                <input type="hidden" name="action" value="registeruser"/>
+                                <input type="hidden" name="action" value="registergarage"/>
                             </div>
                         </div>
                     </form>

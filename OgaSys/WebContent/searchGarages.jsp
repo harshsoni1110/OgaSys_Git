@@ -9,12 +9,6 @@
 
 <!DOCTYPE html>
 <html>
-<%
-
-	
-%>
-
-
 <head>
     <title>::Search Garages::</title>
 
@@ -55,18 +49,18 @@
 			
 
 			for (Fault f : lsBasic) {
-				basicPkgFaultName += "<li>" + f.getFaultname() + "</li>";
+				basicPkgFaultName += "<li>" + f.getFaultName() + "</li>";
 		 	} 
 			
 			
 			premiumPkgFaultName = basicPkgFaultName;// + "<ul>";
 			for (Fault f : lsPremium) {
-				premiumPkgFaultName += "<li>" + f.getFaultname() + "</li>";
+				premiumPkgFaultName += "<li>" + f.getFaultName() + "</li>";
 		 	} 
 			
 			advancePkgFaultName = premiumPkgFaultName;// + "<ul>";
 			for (Fault f : lsAdvance) {
-				advancePkgFaultName += "<li>" + f.getFaultname() + "</li>";
+				advancePkgFaultName += "<li>" + f.getFaultName() + "</li>";
 		 	} 
 			
 		%>
@@ -445,7 +439,7 @@ $(document).ready(function() {
 
 
 
-}
+
 
 
 </script>

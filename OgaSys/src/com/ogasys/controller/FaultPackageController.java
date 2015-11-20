@@ -14,10 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.mongodb.morphia.Datastore;
-import org.mongodb.morphia.Morphia;
-
-import com.mongodb.MongoClient;
 import com.ogasys.constant.JspFiles;
+import com.ogasys.dao.DBConnection;
 import com.ogasys.model.Fault;
 
 
@@ -42,10 +40,12 @@ public class FaultPackageController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		MongoClient mongo = new MongoClient("localhost",27017);
+/*		MongoClient mongo = new MongoClient("localhost",27017);
 		Morphia mor = new Morphia();
-		mor.map(Fault.class);
-		Datastore ds = mor.createDatastore(mongo, "ogasys");
+		mor.map(Fault.class);*/
+		//Getting Database Connection Instance
+		Datastore ds = DBConnection.getInstance().getConnection();//mor.createDatastore(mongo, "ogasys");
+		//Listing Faults Collection
 		List<Fault> lsFaults = ds.find(Fault.class).asList();
 		PrintWriter out = response.getWriter();
 		//out.println (lsFaults.toString());
@@ -53,19 +53,20 @@ public class FaultPackageController extends HttpServlet {
 		ArrayList<Fault> lsPremium = new ArrayList <Fault> ();
 		ArrayList<Fault> lsAdvance = new ArrayList <Fault> ();
 		
-		// classifying faults in Basic , Premium & Advance Package
+		// classifying faults in Basic, Premium & Advance Package
+		//out.println(lsFaults.toString());
 		
 		for (Fault f : lsFaults){
 			
-			//out.println (f.toString());
-			if (f.getPackagetype().equals("Basic")) {
+			out.println (f.toString());
+			if (f.getPackageType().equals("Basic")) {
 				lsBasic.add(f);
 			} 
-			else if (f.getPackagetype().equals("Premium")){
+			else if (f.getPackageType().equals("Premium")){
 				out.println(f.toString());
 				lsPremium.add(f);
 			}
-			else if (f.getPackagetype().equals("Advance")){
+			else if (f.getPackageType().equals("Advance")){
 				lsAdvance.add(f);
 				
 			}
@@ -86,6 +87,7 @@ public class FaultPackageController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		doPost(request,response);
 	}
 
 }

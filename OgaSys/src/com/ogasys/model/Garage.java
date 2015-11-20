@@ -1,59 +1,119 @@
 package com.ogasys.model;
 
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
-@Entity(value="garage")
+
+@Entity(value="Garage")
 public class Garage {
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Garage [garageId=" + garageId + ", garageName=" + garageName + ", garageEmailId=" + garageEmailId
+				+ ", garagePassword=" + garagePassword + ", ContactNumber=" + ContactNumber + ", address=" + address.toString()
+				+ "]";
+	}
+
 	@Id
-	String garageId;
-	String name;
-	String Email;
-	String pass;
-	String add;
-	String location;
-	long contact;
-	int pickprice;
-	public String getName() {
-		return name;
+	private ObjectId garageId;
+	private String garageName;
+	private String garageEmailId;
+	private String garagePassword;
+	private long ContactNumber;
+	
+	@Embedded
+	private Address address;
+
+	/**
+	 * @return the garageId
+	 */
+	public ObjectId getGarageId() {
+		return garageId;
 	}
-	public void setName(String name) {
-		this.name = name;
+
+	/**
+	 * @param garageId the garageId to set
+	 */
+	public void setGarageId(ObjectId garageId) {
+		this.garageId = garageId;
 	}
-	public String getEmail() {
-		return Email;
+
+	/**
+	 * @return the garageName
+	 */
+	public String getGarageName() {
+		return garageName;
 	}
-	public void setEmail(String email) {
-		Email = email;
+
+	/**
+	 * @param garageName the garageName to set
+	 */
+	public void setGarageName(String garageName) {
+		this.garageName = garageName;
 	}
-	public String getPass() {
-		return pass;
+
+	/**
+	 * @return the garageEmailId
+	 */
+	public String getGarageEmailId() {
+		return garageEmailId;
 	}
-	public void setPass(String pass) {
-		this.pass = pass;
+
+	/**
+	 * @param garageEmailId the garageEmailId to set
+	 */
+	public void setGarageEmailId(String garageEmailId) {
+		this.garageEmailId = garageEmailId;
 	}
-	public String getAdd() {
-		return add;
+
+	/**
+	 * @return the garagePassword
+	 */
+	public String getGaragePassword() {
+		return garagePassword;
 	}
-	public void setAdd(String add) {
-		this.add = add;
+
+	/**
+	 * @param garagePassword the garagePassword to set
+	 */
+	public void setGaragePassword(String garagePassword) {
+		this.garagePassword = garagePassword;
 	}
-	public String getLocation() {
-		return location;
+
+	/**
+	 * @return the contactNumber
+	 */
+	public long getContactNumber() {
+		return ContactNumber;
 	}
-	public void setLocation(String location) {
-		this.location = location;
+
+	/**
+	 * @param contactNumber the contactNumber to set
+	 */
+	public void setContactNumber(long contactNumber) {
+		ContactNumber = contactNumber;
 	}
-	public long getContact() {
-		return contact;
+
+	/**
+	 * @return the address
+	 */
+	public Address getAddress() {
+		return address;
 	}
-	public void setContact(long contact) {
-		this.contact = contact;
+
+	/**
+	 * @param address the address to set
+	 */
+	public void setAddress(Address address) {
+		this.address = address;
 	}
-	public int getPickprice() {
-		return pickprice;
-	}
-	public void setPickprice(int pickprice) {
-		this.pickprice = pickprice;
-	}
+	
+	
+	
+	
+	
 	
 }

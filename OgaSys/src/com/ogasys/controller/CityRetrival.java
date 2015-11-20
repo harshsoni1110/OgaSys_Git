@@ -50,8 +50,8 @@ public class CityRetrival extends HttpServlet {
 		Iterator itr = ser.iterator();
 		while (itr.hasNext()) {
 			Garage one = (Garage) itr.next();
-			System.out.print("Name " + one.getEmail());
-			System.out.println(" Area " +one.getLocation());
+	//		System.out.print("Name " + one.getEmail());
+		//	System.out.println(" Area " +one.getLocation());
 		}
 		
 	}

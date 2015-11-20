@@ -3,48 +3,89 @@ package com.ogasys.model;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Property;
-@Entity(value="fault")
+@Entity(value="Fault")
 public class Fault {
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
-		return "Fault [faultId=" + faultId + ", faultname=" + faultname + ", type=" + type + ", desc=" + desc
-				+ ", packagetype=" + packagetype + "]";
+		return "Fault [faultId=" + faultId + ", faultType=" + faultType + ", faultName=" + faultName
+				+ ", faultDescription=" + faultDescription + ", packageType=" + packageType + "]";
 	}
 	@Id
 	String faultId;
-	@Property("FaultName")
-	String faultname;
 	@Property("FaultType")
-	String type;
-	@Property("Desc")
-	String desc;
+	String faultType;
+	@Property("FaultName")
+	String faultName;
+	@Property("FaultDescription")
+	String faultDescription;
 	@Property("package")
-	String packagetype;
+	String packageType;
+	/**
+	 * @return the faultId
+	 */
+	public String getFaultId() {
+		return faultId;
+	}
+	/**
+	 * @param faultId the faultId to set
+	 */
+	public void setFaultId(String faultId) {
+		this.faultId = faultId;
+	}
+	/**
+	 * @return the faultType
+	 */
+	public String getFaultType() {
+		return faultType;
+	}
+	/**
+	 * @param faultType the faultType to set
+	 */
+	public void setFaultType(String faultType) {
+		this.faultType = faultType;
+	}
+	/**
+	 * @return the faultName
+	 */
+	public String getFaultName() {
+		return faultName;
+	}
+	/**
+	 * @param faultName the faultName to set
+	 */
+	public void setFaultName(String faultName) {
+		this.faultName = faultName;
+	}
+	/**
+	 * @return the faultDescription
+	 */
+	public String getFaultDescription() {
+		return faultDescription;
+	}
+	/**
+	 * @param faultDescription the faultDescription to set
+	 */
+	public void setFaultDescription(String faultDescription) {
+		this.faultDescription = faultDescription;
+	}
+	/**
+	 * @return the packageType
+	 */
+	public String getPackageType() {
+		return packageType;
+	}
+	/**
+	 * @param packageType the packageType to set
+	 */
+	public void setPackageType(String packageType) {
+		this.packageType = packageType;
+	}
 	
-	public String getFaultname() {
-		return faultname;
-	}
-	public void setFaultname(String faultname) {
-		this.faultname = faultname;
-	}
-	public String getType() {
-		return type;
-	}
-	public void setType(String type) {
-		this.type = type;
-	}
-	public String getDesc() {
-		return desc;
-	}
-	public void setDesc(String desc) {
-		this.desc = desc;
-	}
-	public String getPackagetype() {
-		return packagetype;
-	}
-	public void setPackagetype(String packagetype) {
-		this.packagetype = packagetype;
-	}
 	
 	
+
 }
