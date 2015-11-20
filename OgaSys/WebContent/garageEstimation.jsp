@@ -1,3 +1,8 @@
+<%@page import="java.io.PrintWriter"%>
+<%@ page import="java.util.List" %>
+<%@ page import="com.mongodb.BasicDBObject" %>
+<%@ page import="com.ogasys.model.ServiceFault" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +18,7 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/bootstrapValidator.js"></script>
 </head>
+
 <body background="bg.jpg" onload="garageDetails()">
     <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation" >
         <div class="container topnav">
@@ -32,7 +38,20 @@
         </div>
         <!-- /.container -->
     </nav>
+	<% List<ServiceFault> faultPriceList= (List<ServiceFault>)session.getAttribute( "faultPriceList" );
+	PrintWriter pw = response.getWriter();
+	BasicDBObject garage = (BasicDBObject) session.getAttribute("garage");
+	pw.println(" Garage Name: "+garage.get("Name").toString());
+	pw.println(" Pick up price: "+garage.get("pickupprice").toString());
+	double amount=0;
+	for(int i=0;i<faultPriceList.size();i++)
+	{
+		pw.println(faultPriceList.get(i).getFaultName());
+		pw.println(faultPriceList.get(i).getFaultPrice());
+		amount+=faultPriceList.get(i).getFaultPrice();
+	}
 
+%>
     <div class="container" style="margin-top: 30px;">
         <div class="row">
             <!-- form: -->
@@ -47,18 +66,16 @@
                         <div class="form-group">
                             <label class="col-lg-3 control-label">Garage Name :</label>
                             <label class="col-lg-3 control-label">
-
-                            <% out.print("a");
-                             %>
+								<%=garage.get("Name").toString() %>
                             </label>
                         </div>
 
                          <div class="form-group">
-                            <label class="col-lg-3 control-label">Address :</label>
+                            <label class="col-lg-3 control-label">Address : </label>
                             
                                 
                                     <label  class="col-lg-3 control-label">
-                                         Address of Garage 1
+                                         <%=garage.get("address").toString() %>
                                     </label>
                             
                         </div>
@@ -68,37 +85,16 @@
                             
                                 
                                     <label  class="col-lg-3 control-label">
-                                         1234567890
+                                         <%=garage.get("contact").toString() %>
                                     </label>
                             
                         </div>
-
-
-
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Package Selected :</label>
-                            
-                                
-                                    <label  class="col-lg-3 control-label" id="selected_package">
-                                         Package
-                                    </label>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Package Price :</label>
-                            
-                                
-                                    <label  class="col-lg-3 control-label" id="selected_package">
-                                         Rs 100
-                                    </label>
-                        </div>
-
-
                         <div class="form-group">
                             <label class="col-lg-3 control-label">Pickup Charge :</label>
                             
                                 
                                     <label  class="col-lg-3 control-label" id="pickup">
-                                         Rs. 100 
+                                         <%=garage.get("pickupprice").toString() %>
                                     </label>
                         </div>
                         <hr style="height:50px; border-top:1px solid #3be; margin-bottom:-20px">
@@ -107,7 +103,7 @@
                             <label class="col-lg-3 control-label">Total :</label>
                             
                                 
-                                    <input type="text" value="Rs. 100"  class="col-lg-3 control-label" id="pickup">
+                                    <input type="text" value="<%=amount %>"  class="col-lg-3 control-label" id="pickup">
                                          
                                     
                         </div>

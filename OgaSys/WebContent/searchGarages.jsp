@@ -11,15 +11,6 @@
 <html>
 <%
 
-	ArrayList <Fault> lsBasic = (ArrayList<Fault>)request.getAttribute("BasicPackage");
-	ArrayList <Fault> lsPremium = (ArrayList <Fault>)request.getAttribute("PremiumPackage");
-	ArrayList <Fault> lsAdvance = (ArrayList <Fault>)request.getAttribute("AdvancePackage");
-	if (lsBasic == null || lsPremium == null || lsAdvance == null) {
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/FaultPackageController");
-		rd.forward(request, response);
-
-	
-}
 	
 %>
 
@@ -36,6 +27,9 @@
 		String basicPkgFaultName = "";
 		String premiumPkgFaultName = "";
 		String advancePkgFaultName = "";
+		ArrayList <Fault> lsBasic = new ArrayList <Fault> ();
+		ArrayList <Fault> lsPremium = new ArrayList <Fault> ();		
+		ArrayList <Fault> lsAdvance =new ArrayList <Fault> ();
 	%>	
 
     <script type="text/javascript" src="assets/js/jquery-1.11.2.min.js"></script>
@@ -44,6 +38,16 @@
     <script>
     $(document).ready ( function () {
 		<%
+			// setting variou fault into packages
+			
+			lsBasic = (ArrayList<Fault>)request.getAttribute("BasicPackage");
+			lsPremium = (ArrayList <Fault>)request.getAttribute("PremiumPackage");
+			lsAdvance = (ArrayList <Fault>)request.getAttribute("AdvancePackage");
+			
+			if (lsBasic == null || lsPremium == null || lsAdvance == null) {
+				RequestDispatcher rd = getServletContext().getRequestDispatcher("/FaultPackageController");
+				rd.forward(request, response);
+			}
 			
 			basicPkgFaultName = "";
 			premiumPkgFaultName = "";
@@ -71,7 +75,10 @@
 	
    });
     	
-    
+    /**
+    	ele : will this element of select menu of fault package
+    	this function will be called onChange event.
+    */
 	function loadFaults (ele) {
 		pkgType = ele.value;
 		// setting type of package
@@ -118,7 +125,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <span><a href="#" data-toggle="modal" data-target="#myModal" style="font-size : 26px;">Login</span></a>
+                        <span><a href="#" data-toggle="modal" data-target="#myModal" style="font-size : 26px;">Login</a></span>
                     </li>
                
                 </ul>
@@ -142,7 +149,7 @@
                         <div class="form-group">
                             <label class="col-lg-3 control-label">Select City :</label>
                             <select class="form-control" id="location" style="width:30%" name="location">
-                                <option>Ahemadabad</option>
+                                <option>Ahemedabad</option>
                                 <option>Gandhinagar</option>
                                 <option>regional</option>
                             </select>
