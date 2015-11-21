@@ -155,6 +155,7 @@ public class SearchGarageController extends HttpServlet {
 		      HttpSession session = request.getSession();
 		      session.setAttribute("resultList", resultList);
 		      session.setAttribute("lsFault", lsFault);
+		      session.setAttribute("VehicleType", vehicleType);
 		      System.out.println(lsFault.size());
 		      response.sendRedirect("searchResults.jsp");
 		}

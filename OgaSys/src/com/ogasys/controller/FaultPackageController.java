@@ -14,9 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.mongodb.morphia.Datastore;
+import org.mongodb.morphia.Morphia;
+
+import com.mongodb.MongoClient;
 import com.ogasys.constant.JspFiles;
 import com.ogasys.dao.DBConnection;
 import com.ogasys.model.Fault;
+import com.ogasys.model.Service;
 
 
 /**
@@ -44,8 +48,10 @@ public class FaultPackageController extends HttpServlet {
 		Morphia mor = new Morphia();
 		mor.map(Fault.class);*/
 		//Getting Database Connection Instance
-		Datastore ds = DBConnection.getInstance().getConnection();//mor.createDatastore(mongo, "ogasys");
-		//Listing Faults Collection
+		MongoClient m = DBConnection.getInstance().getMongoInstance();
+		Morphia mor = new Morphia();
+		mor.map(Fault.class);
+		Datastore ds = mor.createDatastore(m, "ogasys");
 		List<Fault> lsFaults = ds.find(Fault.class).asList();
 		PrintWriter out = response.getWriter();
 		//out.println (lsFaults.toString());

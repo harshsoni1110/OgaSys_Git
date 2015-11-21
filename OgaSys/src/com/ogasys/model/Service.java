@@ -1,35 +1,51 @@
 package com.ogasys.model;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.Property;
 @Entity (value="Service",noClassnameStored=true)
 public class Service {
+	@Override
+	public String toString() {
+		return "Service [serviceId=" + serviceId + ", garageId=" + garageId + ", userid=" + userid + ", serviceStatus="
+				+ serviceStatus + ", serviceType=" + serviceType + ", vehicleType=" + vehicleType + ", startDate="
+				+ startDate + ", completeDate=" + completeDate + ", finalAmount=" + finalAmount + ", faults=" + Faults
+				+ ", payment=" + payment + ", pickUpRequest=" + pickUpRequest + "]";
+	}
 	@Id
-	String ServiceId;
+	String serviceId;
+	@Property ("GarageId")
 	String garageId;
+	@Property ("UserId")
 	String userid;
+	@Property ("ServiceStatus")
 	String serviceStatus;
-	public String getServiceStatus() {
-		return serviceStatus;
-	}
-	public void setServiceStatus(String serviceStatus) {
-		this.serviceStatus = serviceStatus;
-	}
-	double pick;
+	@Property ("ServiceType")
+	String serviceType;
+	@Property ("VechicleType")
+	String vehicleType;
+	@Property ("StartDateTime")
+	Date startDate;
+	@Property ("CompleteDateTime")
+	Date completeDate;
+	@Property ("FinalAmount")
+	String finalAmount;
 	@Embedded
-	ArrayList <ServiceFault> faults;
-	public double getPick() {
-		return pick;
+	List <ServiceFault> Faults;
+	@Property ("Payment")
+	String payment;
+	@Property ("PickUpRequest")
+	String pickUpRequest;
+	public String getPickUpRequest() {
+		return pickUpRequest;
 	}
-	public void setPick(double pick) {
-		this.pick = pick;
-	}
-	public String getServiceId()
-	{
-		return ServiceId;
+	public void setPickUpRequest(String pickUpRequest) {
+		this.pickUpRequest = pickUpRequest;
 	}
 	public String getGarageId() {
 		return garageId;
@@ -43,10 +59,56 @@ public class Service {
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
-	public ArrayList<ServiceFault> getFaults() {
-		return faults;
+	public String getServiceStatus() {
+		return serviceStatus;
 	}
-	public void setFaults(ArrayList<ServiceFault> faults) {
-		this.faults = faults;
+	public void setServiceStatus(String serviceStatus) {
+		this.serviceStatus = serviceStatus;
 	}
+	public String getServiceType() {
+		return serviceType;
+	}
+	public void setServiceType(String serviceType) {
+		this.serviceType = serviceType;
+	}
+	public String getVehicleType() {
+		return vehicleType;
+	}
+	public void setVehicleType(String vehicleType) {
+		this.vehicleType = vehicleType;
+	}
+	public Date getStartDate() {
+		return startDate;
+	}
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+	public Date getCompleteDate() {
+		return completeDate;
+	}
+	public void setCompleteDate(Date completeDate) {
+		this.completeDate = completeDate;
+	}
+	public String getFinalAmount() {
+		return finalAmount;
+	}
+	public void setFinalAmount(String finalAmount) {
+		this.finalAmount = finalAmount;
+	}
+	public List<ServiceFault> getFaults() {
+		return Faults;
+	}
+	public void setFaults(List<ServiceFault> faults) {
+		this.Faults = faults;
+	}
+	public String getPayment() {
+		return payment;
+	}
+	public void setPayment(String payment) {
+		this.payment = payment;
+	}
+	public String getServiceId() {
+		return serviceId;
+	}
+	
 }

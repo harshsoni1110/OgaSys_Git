@@ -28,10 +28,10 @@ public class DBConnection {
 			mongo = new MongoClient(uri);
 			
 			//using Morphia java framework
-			Morphia mor = new Morphia();
+			mor = new Morphia();
 			
 			//selecting "ogasys" database
-			ds = mor.createDatastore(mongo, "ogasys");
+		/*	ds = mor.createDatastore(mongo, "ogasys");*/
 		} catch (MongoException e) {
 			//detecting exceptions
 			System.out.println(e.toString());
@@ -66,6 +66,10 @@ public class DBConnection {
     /**
      * close connection with
      */
+    public Morphia getMorphiaInstance()
+    {
+    	return mor; 
+    }
 
     public void close(){
         mongo.close();
@@ -74,7 +78,7 @@ public class DBConnection {
 
     private MongoClient mongo  =  null;
     private MongoClientURI uri = null;
-
+    private Morphia mor=null;
     private Datastore ds = null;
     private static DBConnection instance = null;
     

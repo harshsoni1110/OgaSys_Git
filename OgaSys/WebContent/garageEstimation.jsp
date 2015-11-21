@@ -172,9 +172,9 @@
 	<% List<ServiceFault> faultPriceList= (List<ServiceFault>)session.getAttribute( "faultPriceList" );
 	PrintWriter pw = response.getWriter();
 	BasicDBObject garage = (BasicDBObject) session.getAttribute("garage");
-	pw.println(" Garage Name: "+garage.get("Name").toString());
-	pw.println(" Pick up price: "+garage.get("pickupprice").toString());
-	
+	pw.println(" Garage Name: "+garage.get("GarageName").toString());
+	pw.println(" Pick up price: "+garage.get("PickUpPrice").toString());
+	double amount=Double.parseDouble(garage.get("PickUpPrice").toString());
 
 %>
     <div class="container" style="margin-top: 30px;">
@@ -187,11 +187,11 @@
                         <h3 class="panel-title">Estimation of Selected Garage</h3>
                     </div>
                     <div class="panel-body">
-                    <form id="defaultForm" method="post" class="form-horizontal">
+                    <form id="defaultForm" class="form-horizontal" action="ServiceRequest" method="get" >
                         <div class="form-group">
                             <label class="col-lg-3 control-label">Garage Name :</label>
                             <label class="col-lg-3 control-label">
-								<%=garage.get("Name").toString() %>
+								<%=garage.get("GarageName").toString() %>
                             </label>
                         </div>
 
@@ -200,7 +200,7 @@
                             
                                 
                                     <label  class="col-lg-3 control-label">
-                                         <%=garage.get("address").toString() %>
+                                         <%=garage.get("Address").toString() %>
                                     </label>
                             
                         </div>
@@ -210,7 +210,7 @@
                             
                                 
                                     <label  class="col-lg-3 control-label">
-                                         <%=garage.get("contact").toString() %>
+                                         <%=garage.get("ContactNumber").toString() %>
                                     </label>
                             
                         </div>
@@ -219,7 +219,7 @@
                             
                                 
                                     <label  class="col-lg-3 control-label" id="pickup">
-                                         <%=garage.get("pickupprice").toString() %>
+                                         <%=garage.get("PickUpPrice").toString() %>
                                     </label>
                         </div>
                         <hr style="height:50px; border-top:1px solid #3be; margin-bottom:-20px">
@@ -241,7 +241,7 @@
                                                </tr>
                                            </thead>
                                            <tbody>
-                                           <%	double amount=0;
+                                           <%	
                                        	for(int i=0;i<faultPriceList.size();i++)
                                        	{		%>
                                        			<tr>
@@ -266,12 +266,12 @@
                         </div>
                         <div class="form-group">
                             <div style="margin-left: 100px; float:left;">
-                                <button type="submit" class="btn btn-primary" name="search" value="search" style="width:150px; height:40px; background-color:#e34; border-color : #e34;">Request with Pick UP</button>
+                                <button type="submit" class="btn btn-primary" name="searchwithpick" value="search" style="width:150px; height:40px; background-color:#e34; border-color : #e34;">Request with Pick UP</button>
                                 
                             </div>
 
                             <div style="margin-left: 30px; float:left;">
-                                <button type="submit" class="btn btn-primary" name="search" value="search" style="width:150px; height:40px; background-color:#e34; border-color : #e34;">Request  without Pick UP</button>
+                                <button type="submit" class="btn btn-primary" name="searchwithoutpick" value="search" style="width:150px; height:40px; background-color:#e34; border-color : #e34;">Request  without Pick UP</button>
                                 
                             </div>
 

@@ -57,7 +57,7 @@ public class CostEstimationController extends HttpServlet {
 		query.put("GarageId", garageId);
 		for(int i=0;i<lsFault.size();i++)
 		{
-			//System.out.println(lsFault.get(i));
+			System.out.println(lsFault.get(i));
 			query.append("FaultId", lsFault.get(i).toString());
 			BasicDBObject query1 = new BasicDBObject().append("_id", lsFault.get(i));
 			DBCursor cursor = fpricecollection.find(query);
@@ -65,6 +65,7 @@ public class CostEstimationController extends HttpServlet {
 			BasicDBObject priceobj = (BasicDBObject) cursor.next();
 			BasicDBObject fltname = (BasicDBObject) cursor1.next();
 			ServiceFault serviceFault = new ServiceFault();
+			serviceFault.setFaultId(lsFault.get(i).toString());
 			System.out.println(fltname.get("FaultName").toString());
 			System.out.println(Double.parseDouble(priceobj.get("Price").toString()));
 			serviceFault.setFaultName(fltname.get("FaultName").toString());
