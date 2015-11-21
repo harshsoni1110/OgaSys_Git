@@ -1,6 +1,8 @@
+<%@page import="com.ogasys.constant.JspFiles"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@page import="com.ogasys.model.User" %>	
+<%@page import="com.ogasys.model.User" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>	
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +17,11 @@
 <meta name="author" content="Steelcoders" />
 
 <!-- Styles -->
-
+<%!
+	
+	//User user;
+	
+%>
 <link href="assets/css/bootstrap.min.css" rel="stylesheet"
 	type="text/css" />
 <link href="assets/css/modern.min.css" rel="stylesheet" type="text/css" />
@@ -28,20 +34,16 @@ body {
 	background: #F1F3FA;
 }
 </style>
-<%  
-            User user = (User) session.getAttribute("UserObject");
-            String userName = (String) session.getAttribute("UserName");
-            String gender=null;
-            if(user.getGender()==1)
-            	 gender="Male";
-            else 
-            	gender="Female";
-            if (userName == null) {
-                RequestDispatcher rd=request.getRequestDispatcher("index.jsp");
-                rd.forward(request, response);
-            }
-%>
 </head>
+<%  
+           //User user=null;
+           // user = (User) session.getAttribute("user");
+			 //{
+				//System.out.print(user.toString() + "h");
+				//response.sendRedirect(JspFiles.INDEX_FILE);
+		//	}
+%>
+
 <body>
 	<div class="container" style="padding-top: 60px;">
 		<div class="panel panel-primary"
@@ -61,7 +63,7 @@ body {
 								<img src="assets/img/profile.jpg"
 									class="avatar img-circle img-thumbnail" alt="avatar">
 							</div>
-							<h3 class="text-center"><%=user.getFirstName() %> <%=user.getLastName()%></h3>
+							<h3 class="text-center"><%=((User)session.getAttribute("user")).getFirstName() %></h3>
 						</div>
 						<div class="col-md-3" style="margin-left: 600px;">
 							<a class="btn btn-primary" name="edit" href="#"
@@ -76,20 +78,20 @@ body {
 								style="font-size: large; font-family: arial-black;">
 								<tr>
 									<th><span>Full Name</span></th>
-									<td>: <%=user.getFirstName() %> <%=user.getLastName()%></td>
+									<td>: <%= ((User)session.getAttribute("user")).getFirstName() %></td>
 								</tr>
 
 								<tr>
-									<th>Gender</th>
-									<td>: <%=gender %></td>
+									<th>Gender</th> 
+									<td>: <%=((User)session.getAttribute("user")).getFirstName() %></td>
 								</tr>
 								<tr>
 									<th>Email</th>
-									<td>: <%=user.getUserEmailId() %></td>
+									<td>: <%=((User)session.getAttribute("user")).getFirstName() %></td>
 								</tr>
 								<tr>
 									<th>Phone/Mobile Number</th>
-									<td>: <%=user.getContactNumber() %></td>
+									<td>: <%=((User)session.getAttribute("user")).getFirstName() %></td>
 								</tr>
 
 							</table>
@@ -100,22 +102,22 @@ body {
 								<tr>
 									<th><span>Address </span></th>
 									<td>: 
-									 <%=user.getAddress().getFlatNumber() %>, <%=user.getAddress().getStreet() %>, 
-									 <%=user.getAddress().getLandmark() %> 
+									 <%=((User)session.getAttribute("user")).getFirstName()%>, 
+									 <%=((User)session.getAttribute("user")).getFirstName()%> 
 									</td>
 								</tr>
 
 								<tr>
 									<th>City</th>
-									<td>: <%=user.getAddress().getCity() %></td>
+									<td>: <%=((User)session.getAttribute("user")).getFirstName()%></td>
 								</tr>
 								<tr>
 									<th>State</th>
-									<td>: <%=user.getAddress().getState() %></td>
+									<td>: <%=((User)session.getAttribute("user")).getFirstName() %></td>
 								</tr>
 								<tr>
 									<th>Postal Code</th>
-									<td>: <%=user.getAddress().getPinCode() %></td>
+									<td>: <%=((User)session.getAttribute("user")).getFirstName() %></td>
 								</tr>
 
 							</table>

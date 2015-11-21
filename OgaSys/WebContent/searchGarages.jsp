@@ -1,11 +1,12 @@
+<%@page import="com.ogasys.constant.JspFiles"%>
 <%@page import="java.io.PrintWriter"%>
 <%@page import="com.ogasys.model.Fault"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.io.PrintWriter" %>
+<%@page import="com.ogasys.model.User" %>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 
 <!DOCTYPE html>
 <html>
@@ -16,7 +17,12 @@
     <link rel="stylesheet" href="/assets/css/bootstrapValidator.css"/>
 
     <!-- Include the FontAwesome CSS if you want to use feedback icons provided by FontAwesome -->
+
     <!--<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />-->
+<%
+	
+%>
+
 	<%! 
 		String basicPkgFaultName = "";
 		String premiumPkgFaultName = "";
@@ -32,6 +38,9 @@
     <script>
     $(document).ready ( function () {
 		<%
+		User user = (User) session.getAttribute("user");
+		if (user == null)
+			response.sendRedirect(JspFiles.INDEX_FILE);
 			// setting variou fault into packages
 			
 			lsBasic = (ArrayList<Fault>)request.getAttribute("BasicPackage");
@@ -106,25 +115,7 @@
     <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation" >
         <div class="container topnav">
             <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-               <b> <a class="navbar-brand topnav" href="index.jsp">Ogasys</a></b>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <span><a href="#" data-toggle="modal" data-target="#myModal" style="font-size : 26px;">Login</a></span>
-                    </li>
-               
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+            <jsp:include page="header.jsp"></jsp:include>
         </div>
         <!-- /.container -->
     </nav>

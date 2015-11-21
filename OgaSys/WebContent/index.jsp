@@ -27,6 +27,11 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script src="assets/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="assets/js/bootstrap.min.js"></script>
+
 
 </head>
 
@@ -49,13 +54,8 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li>                        <a href="#about">About</a>
-                    </li>
-                    <li>
-                        <a href="#services">Services</a>
-                    </li>
-                    <li>
-                        <a href="#contact">Contact</a>
+                    <li>                        
+                    	<a href="#about">About</a>
                     </li>
                 </ul>
             </div>
@@ -102,36 +102,7 @@
 	<a  name="services"></a>
     <!-- /.banner -->
 
-    <!-- Footer -->
-    
-    <jsp:include page="footer.jsp"/> 
-    <!-- <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <ul class="list-inline">
-                        <li>
-                            <a href="#">Home</a>
-                        </li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li>
-                            <a href="#about">About</a>
-                        </li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li>
-                            <a href="#services">Services</a>
-                        </li>
-                        <li class="footer-menu-divider">&sdot;</li>
-                        <li>
-                            <a href="#contact">Contact</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer> -->
-
-    <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+       <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -140,17 +111,17 @@
             </div>
             <div class="modal-body row">
                 <h6 class="text-center">COMPLETE THESE FIELDS TO LOGIN</h6>
-                <form  method="post" action="Controller" class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0">
+                <form  method="post"  action="LoginController"  class="col-md-10 col-md-offset-1 col-xs-12 col-xs-offset-0">
                     <div class="form-group">
-                        <input type="text" name="uname" class="form-control input-lg" placeholder="Email" required="required">
+                        <input type="text" id= "userEmailId" name="uname" class="form-control input-lg" placeholder="Email" required="required">
                     </div>
                     <div class="form-group">
-                        <input type="password" name="pwd" class="form-control input-lg" placeholder="Password" required="required">
+                        <input type="password"  id= "userPassword" name="pwd" class="form-control input-lg" placeholder="Password" required="required">
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-danger btn-lg btn-block">Sign In</button>
-                        <input type="hidden" name="action" value="loginvalidate"/>
-                        <span class="pull-right"><a href="#">Register</a></span><span><a href="#">Need help?</a></span>
+                        <button class="btn btn-danger btn-lg btn-block" >Sign In</button>
+                        
+                        <span class="pull-right"><a href="#">Register</a></span><span><a href="#">Need help?</a></span>-
                     </div>
                 </form>
             </div>
@@ -162,11 +133,6 @@
 </div>
 
    <!-- jQuery -->
-    <script src="assets/js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="assets/js/bootstrap.min.js"></script>
-
 </body>
 
 </html>
