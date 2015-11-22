@@ -1,5 +1,6 @@
 package com.ogasys.model;
 
+import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Property;
@@ -15,7 +16,7 @@ public class Fault {
 				+ ", faultDescription=" + faultDescription + ", packageType=" + packageType + "]";
 	}
 	@Id
-	String faultId;
+	ObjectId faultId;
 	@Property("FaultType")
 	String faultType;
 	@Property("FaultName")
@@ -27,13 +28,13 @@ public class Fault {
 	/**
 	 * @return the faultId
 	 */
-	public String getFaultId() {
+	public ObjectId getFaultId() {
 		return faultId;
 	}
 	/**
 	 * @param faultId the faultId to set
 	 */
-	public void setFaultId(String faultId) {
+	public void setFaultId(ObjectId faultId) {
 		this.faultId = faultId;
 	}
 	/**

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
@@ -18,7 +19,7 @@ public class Service {
 				+ ", payment=" + payment + ", pickUpRequest=" + pickUpRequest + "]";
 	}
 	@Id
-	String serviceId;
+	ObjectId serviceId;
 	@Property ("GarageId")
 	String garageId;
 	@Property ("UserId")
@@ -36,7 +37,7 @@ public class Service {
 	@Property ("FinalAmount")
 	String finalAmount;
 	@Embedded
-	List <ServiceFault> Faults;
+	ArrayList <ServiceFault> Faults;
 	@Property ("Payment")
 	String payment;
 	@Property ("PickUpRequest")
@@ -95,10 +96,10 @@ public class Service {
 	public void setFinalAmount(String finalAmount) {
 		this.finalAmount = finalAmount;
 	}
-	public List<ServiceFault> getFaults() {
+	public ArrayList<ServiceFault> getFaults() {
 		return Faults;
 	}
-	public void setFaults(List<ServiceFault> faults) {
+	public void setFaults(ArrayList<ServiceFault> faults) {
 		this.Faults = faults;
 	}
 	public String getPayment() {
@@ -107,7 +108,7 @@ public class Service {
 	public void setPayment(String payment) {
 		this.payment = payment;
 	}
-	public String getServiceId() {
+	public ObjectId getServiceId() {
 		return serviceId;
 	}
 	

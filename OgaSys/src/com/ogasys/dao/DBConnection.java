@@ -1,9 +1,12 @@
 package com.ogasys.dao;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
+
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
+import com.mongodb.MongoCommandException;
 import com.mongodb.MongoException;
+import com.mongodb.MongoSecurityException;
 import com.ogasys.constant.*;
 /**
  * 
@@ -32,7 +35,9 @@ public class DBConnection {
 			
 			//selecting "ogasys" database
 		/*	ds = mor.createDatastore(mongo, "ogasys");*/
-		} catch (MongoException e) {
+		}
+
+		catch (MongoException e) {
 			//detecting exceptions
 			System.out.println(e.toString());
 		}
